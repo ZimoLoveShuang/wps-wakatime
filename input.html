@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div style="text-align: center;">
+    <input id="input" type="text" placeholder="请输入api_key"/>
+    <input type="submit" value="确定" onclick="save()"/>
+    <span id="error" style="color: red;"></span>
+</div>
+<script>
+    function save() {
+        var v = document.getElementById('input').value
+        console.log(v)
+        var partten = /\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/
+        if (partten.test(v)) {
+            document.getElementById('error').innerText = ''
+            wps.PluginStorage.setItem('api_key', v)
+            var userdir = wps.Env.GetHomePath()
+            var config_path = userdir + '/.wakatime.cfg'
+            wps.FileSystem.writeAsBinaryString(config_path, '[settings]\napi_key=' + v)
+            window.close();
+        } else {
+            document.getElementById('error').innerText = '格式不合法'
+        }
+    }
+</script>
+</body>
+</html>
