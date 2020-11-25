@@ -1,7 +1,7 @@
 {
 	"name": "wps-wakatime",
 	"addonType": "wps",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Wakatime plug-in of wps",
 	"devDependencies": {
 		"wps-jsapi": "latest"
